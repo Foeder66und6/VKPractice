@@ -10,23 +10,30 @@
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="15dp"
         android:id="@+id/btn_call"
+        android:background="@color/design_default_color_primary"
+        android:text="@string/label_call"
         app:layout_constraintTop_toTopOf="parent"
         />
     <Button
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="15dp"
         android:id="@+id/btn_send"
+        android:background="@color/design_default_color_primary"
+        android:text="@string/label_send"
         app:layout_constraintTop_toBottomOf="@id/btn_call"
         />
     <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:layout_margin="15dp"
         android:id="@+id/inp_data"
+        android:hint="@string/hnt_input"
         app:layout_constraintTop_toBottomOf="@id/btn_send"
         />
 
 
-        <!--__wrap_contw layout_constraont @id/b t :Layout_constraintTop_toTopOf-->
 
 </androidx.constraintlayout.widget.ConstraintLayout>

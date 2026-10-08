@@ -21,23 +21,23 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun AppScreen() {}//x
+fun AppScreen() {}
 
 @Composable
-fun Screenshots(screenshots: List<Int>, modifier: Modifier) {//String
+fun Screenshots(screenshots: List<Int>, modifier: Modifier) {
     Column(modifier) {
-        Text(stringResource(R.string.app_screenshots), fontSize=40.sp)//id.//,sp , Modifier.size(40.dp)
-        Row(horizontalArrangement=spacedBy(4.dp), modifier = Modifier.horizontalScroll(rememberScrollState(0))) {//Spaced
+        Text(stringResource(R.string.app_screenshots), fontSize=40.sp)
+        Row(horizontalArrangement=spacedBy(4.dp), modifier = Modifier.horizontalScroll(rememberScrollState(0))) {
             for (s in screenshots) {
-                //Box(Modifier.size(width=230.dp, height=43.dp).background(Color.Blue))//() c
-                Image(painter = painterResource(s), contentDescription = "", Modifier.size(350.dp), contentScale= ContentScale.FillWidth)//xim PainterRes m R.drawable.u_exact width=0.dp, height = .content
+
+                Image(painter = painterResource(s), contentDescription = "", Modifier.size(350.dp), contentScale= ContentScale.FillWidth)
             }
         }
 
     }
-}//i
+}
 @Preview
 @Composable
 private fun Prev() {
-    Screenshots(listOf(1, 2, 3), Modifier)//List "a", "b", "c"
+    Screenshots(listOf(1, 2, 3), Modifier)
 }

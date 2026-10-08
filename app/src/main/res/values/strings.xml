@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">VKPractice</string>
-    <string name="app_screenshots">Kasya</string><!--screenshots-->
+    <string name="app_screenshots">Kasya</string>
+    <string name="msg_invalid_number">Enter correct phone number</string>
+    <string name="label_call">Call somebody</string>
+    <string name="label_send">Send to somebody</string>
+    <string name="hnt_input">Enter message or number</string>
 </resources>

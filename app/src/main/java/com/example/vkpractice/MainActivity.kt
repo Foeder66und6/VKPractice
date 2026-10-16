@@ -13,7 +13,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.vkpractice.ui.theme.VKPracticeTheme
+import com.example.vkpractice.ui.theme.VKPracticeTheme//.Theme//
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -26,7 +26,8 @@ class MainActivity : ComponentActivity() {
 //                        name = "Android",
 //                        modifier = Modifier.padding(innerPadding)
 //                    )
-                    Screenshots(listOf(R.drawable.forest, R.drawable.sleep, R.drawable.running, R.drawable.looking), Modifier.padding(innerPadding))// 1, 2, 3
+                    //Screenshots(listOf(R.drawable.forest, R.drawable.sleep, R.drawable.running, R.drawable.looking), Modifier.padding(innerPadding))// 1, 2, 3 ,
+                    AppList(listOf(App("Magical forest guide", "trevelling", "The most complete collection of information about magical forests",R.drawable.forest), App("Sleep manager", "health", "Application for tracking your sleep", R.drawable.sleep), App("Nutrition manager", "health", "This application heps you track consumed food and gained callories and nutrition elements. Contains a lot of other functions", R.drawable.looking)), Modifier.padding(innerPadding))
                 }
             }
         }

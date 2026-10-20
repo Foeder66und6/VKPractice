@@ -9,12 +9,17 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.pager.PagerState
+import androidx.compose.foundation.pager.rememberPagerState
 import androidx.compose.material3.HorizontalDivider
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
+import androidx.navigation.NavController
+import androidx.navigation.compose.rememberNavController
+import com.example.vkpractice.apps
 import io.mmaltsev.vkeducation.domain.appdetails.AppDetails
 import io.mmaltsev.vkeducation.domain.appdetails.SimilarApp
 import io.mmaltsev.vkeducation.domain.appdetails.Category
@@ -29,6 +34,7 @@ fun AppDetailsContent(
     onReadMoreClick: () -> Unit,
     onDeveloperClick: () -> Unit,
     onSimilarAppDownloadClick: (SimilarApp) -> Unit,
+    navOnItemClick: () -> Unit,
     modifier: Modifier = Modifier,
 ) {
     val appDetails = content.appDetails
@@ -86,6 +92,7 @@ fun AppDetailsContent(
                 .fillMaxWidth()
                 .padding(start = 16.dp),
         )
+        AppShowcase(apps, rememberPagerState(pageCount = {(apps.size + 2) / 3}), navOnItemClick, Modifier.padding(top = 12.dp, start = 16.dp))
     }
 }
 
@@ -126,7 +133,8 @@ private fun Preview() {
             onInstallClick = {},
             onDeveloperClick = {},
             onSimilarAppDownloadClick = {},
-            modifier = Modifier.fillMaxSize(),
+            navOnItemClick = {},
+            modifier = Modifier.fillMaxSize(),//
         )
     }
 }

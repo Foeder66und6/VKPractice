@@ -1,5 +1,6 @@
 package io.mmaltsev.vkeducation.presentation.appdetails
 
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.IntrinsicSize
 import androidx.compose.foundation.layout.Row
@@ -16,6 +17,7 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
 import androidx.compose.ui.layout.ContentScale
+import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.style.TextAlign
@@ -38,14 +40,20 @@ fun AppDetailsHeader(
         modifier = modifier,
         verticalAlignment = Alignment.CenterVertically,
     ) {
-        AsyncImage(
-            model = appDetails.iconUrl,
-            contentDescription = null,
-            contentScale = ContentScale.Crop,
-            modifier = Modifier
-                .size(128.dp)
-                .clip(RoundedCornerShape(16.dp)),
-        )
+        val imageModifier = Modifier
+            .size(128.dp)
+            .clip(RoundedCornerShape(16.dp))
+        if (appDetails.iconID != null) {
+            Image(painterResource(appDetails.iconID), contentDescription = null, contentScale = ContentScale.Crop, modifier = imageModifier)
+        } else {
+            AsyncImage(
+                model = appDetails.iconUrl,
+                contentDescription = null,
+                contentScale = ContentScale.Crop,
+                modifier = imageModifier,
+            )
+
+        }
         Spacer(Modifier.width(16.dp))
         Column {
             Text(

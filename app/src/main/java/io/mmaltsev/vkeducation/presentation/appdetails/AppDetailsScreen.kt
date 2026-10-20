@@ -16,11 +16,14 @@ import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.stringResource
 import androidx.hilt.navigation.compose.hiltViewModel
+import androidx.navigation.NavController
+import com.example.vkpractice.apps
 import io.mmaltsev.vkeducation.R
+import io.mmaltsev.vkeducation.domain.appdetails.AppDetails
 import kotlinx.coroutines.flow.Flow
 
 @Composable
-fun AppDetailsScreen() {
+fun AppDetailsScreen(navOnItemClick: () -> Unit, navOnBackClick: () -> Unit, index: Int = -1) {
     val viewModel = hiltViewModel<AppDetailsViewModel>()
     val state by viewModel.state.collectAsState()
     val events = viewModel.events
@@ -59,11 +62,16 @@ fun AppDetailsScreen() {
             }
 
             is AppDetailsState.Content -> {
+                var cont = currentState
+                if (index != -1) {
+                    val det = cont.appDetails
+                    cont = AppDetailsState.Content(AppDetails(det.id, apps[index].title, det.developer, det.category, det.ageRating, det.size, det.iconUrl, det.screenshotUrlList, apps[index].description, apps[index].iconID), cont.similarApps, cont.descriptionCollapsed)
+                }
                 AppDetailsContent(
-                    content = currentState,
+                    content = cont,
                     onBackClick = {
                         // TODO: Открыть предыдущий экран через Jetpack Navigation
-                        viewModel.showUnderDevelopmentMessage()
+                        navOnBackClick()
                     },
                     onShareClick = {
                         viewModel.showUnderDevelopmentMessage()
@@ -80,6 +88,7 @@ fun AppDetailsScreen() {
                     onDeveloperClick = {
                         viewModel.showUnderDevelopmentMessage()
                     },
+                    navOnItemClick = navOnItemClick,
                     modifier = Modifier
                         .fillMaxSize()
                         .safeDrawingPadding()

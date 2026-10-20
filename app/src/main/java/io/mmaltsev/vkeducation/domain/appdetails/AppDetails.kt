@@ -1,7 +1,7 @@
 package io.mmaltsev.vkeducation.domain.appdetails
 
 data class AppDetails(
-    val id: String,
+    open val id: String,
     val name: String,
     val developer: String,
     val category: Category,
@@ -10,4 +10,5 @@ data class AppDetails(
     val iconUrl: String,
     val screenshotUrlList: List<String>?,
     val description: String,
+    val iconID: Int? = null,//,
 )

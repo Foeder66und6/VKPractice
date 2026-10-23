@@ -2,6 +2,7 @@ package com.example.vkpractice
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -27,16 +28,17 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 
 @Composable
-fun AppList(apps: List<App>, modifier: Modifier = Modifier) {
+fun AppList(apps: List<App>, navOnClick: (Int) -> Unit, modifier: Modifier = Modifier) {
     Column(modifier) {
         Toolbar()
 
         LazyColumn() {
-            for (app in apps) {
+            for (i in 0..<apps.size) {
                 item{
-                    AppItem(app)
+                    AppItem(apps[i], Modifier.clickable() {navOnClick(i * 1)})
 
                 }
+
             }
         }
     }
@@ -52,21 +54,11 @@ fun AppColumn(apps: List<App>) {
 
 }
 
-@Composable
-fun AppItem(app: App) {
-    Row(Modifier.padding(8.dp), horizontalArrangement= Arrangement.spacedBy((8.dp))) {
-        Image(painterResource(app.iconID), app.title, Modifier.size(100.dp, 100.dp).clip(RoundedCornerShape(25.dp)), contentScale=ContentScale.Crop)
-        Column(verticalArrangement=Arrangement.spacedBy(6.dp)) {
-            Text(app.title, maxLines = 1, fontSize = 20.sp, fontWeight = FontWeight.Bold)
-            Text("${stringResource(R.string.label_category)}: ${app.category}", maxLines = 1)
-            Text(app.description, maxLines = 2, overflow = TextOverflow.Ellipsis)
-        }
-    }
-}
+
 
 @Composable
 @Preview
 fun preveiw() {
     val apps = listOf(App("Magical forest guide", "trevelling", "The most complete collection of information about magical forests",R.drawable.forest), App("Sleep manager", "health", "Application for tracking your sleep", R.drawable.sleep), App("Nutrition manager", "health", "This application heps you track consumed food and gained callories and nutrition elements. Contains a lot of other functions", R.drawable.looking))
-    AppList(apps)
+    AppList(apps, {})
 }

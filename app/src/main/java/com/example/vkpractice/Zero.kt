@@ -36,6 +36,47 @@ class Zero {
 //c in data allo
 //.ch
 //-
+//n
+;
+//i
+
+//apps: List<App>, .
+//,
+// asppList
+//#£apps
+//? Modifier
+////.grav . .Bottom
+// = val . false
+//L//
+//        for (i in 0..<size) {
+//
+//        }
+// Random().nextInt()
+//List mutableLis
+// getSame
+// addSame
+////_appList.value////#//_appList.value.add(apps.getNext(app))  + 1
+//// = apps.appCatalogue.toMutableList()//_appList.value
+//_appList.value = trList//s
+//_appList.value trList mutableListOf<App>()
+////snack
+//.showSnackbar()//Snackbar() {}////S "123"
+
+//                    Button(onClick = {isVisible = false}, modifier = Modifier.padding(20.dp).fillMaxWidth().align(
+//                        Alignment.BottomCenter)) {Text("ok") }
+//Snackbar() {Text("123")}
+//    context()
+//    Toast.makeText(applget)
+//@@
+
+
+//v true
+//is    //Buttonm'
+// {isVisible = true}
+//зкшмфеу Boolean
+// _evem State .
+//"" + message
+//_events.//evemts ASDA//_evemts
 
 
 

@@ -22,12 +22,13 @@ class MainActivity : ComponentActivity() {
         setContent {
             VKPracticeTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+
 //                    Greeting(
 //                        name = "Android",
 //                        modifier = Modifier.padding(innerPadding)
 //                    )
                     //Screenshots(listOf(R.drawable.forest, R.drawable.sleep, R.drawable.running, R.drawable.looking), Modifier.padding(innerPadding))// 1, 2, 3 ,
-                    AppList(listOf(App("Magical forest guide", "trevelling", "The most complete collection of information about magical forests",R.drawable.forest), App("Sleep manager", "health", "Application for tracking your sleep", R.drawable.sleep), App("Nutrition manager", "health", "This application heps you track consumed food and gained callories and nutrition elements. Contains a lot of other functions", R.drawable.looking)), Modifier.padding(innerPadding))
+                    AppList( Modifier.padding(innerPadding))
                 }
             }
         }

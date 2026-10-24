@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">VKPractice</string>
     <string name="app_screenshots">Kasya</string><!--screenshots-->
+    <string name="details_similar_label">You also might like</string>
+    <string name="desc_app_icon">Icon of this application</string>
+    <string name="label_category">Category</string>
 </resources>

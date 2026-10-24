@@ -13,7 +13,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.vkpractice.ui.theme.VKPracticeTheme
+import com.example.vkpractice.ui.theme.VKPracticeTheme//.Theme//
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -22,11 +22,13 @@ class MainActivity : ComponentActivity() {
         setContent {
             VKPracticeTheme {
                 Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+
 //                    Greeting(
 //                        name = "Android",
 //                        modifier = Modifier.padding(innerPadding)
 //                    )
-                    Screenshots(listOf(R.drawable.forest, R.drawable.sleep, R.drawable.running, R.drawable.looking), Modifier.padding(innerPadding))// 1, 2, 3
+                    //Screenshots(listOf(R.drawable.forest, R.drawable.sleep, R.drawable.running, R.drawable.looking), Modifier.padding(innerPadding))// 1, 2, 3 ,
+                    AppList( Modifier.padding(innerPadding))
                 }
             }
         }

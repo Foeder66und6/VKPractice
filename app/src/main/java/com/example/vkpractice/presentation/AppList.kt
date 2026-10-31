@@ -1,7 +1,6 @@
-package com.example.vkpractice
+package com.example.vkpractice.presentation
 
 //import android.widget.Button
-import android.widget.Toast
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -19,9 +18,6 @@ import androidx.compose.material3.Button
 //import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.Icon
 import androidx.compose.material3.MaterialTheme
-import androidx.compose.material3.Snackbar
-import androidx.compose.material3.SnackbarHost
-import androidx.compose.material3.SnackbarHostState
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
@@ -42,11 +38,20 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
+import androidx.lifecycle.ViewModelProvider
+import androidx.lifecycle.viewmodel.viewModelFactory
+import com.example.vkpractice.R
+import com.example.vkpractice.data.AppMapper
+import com.example.vkpractice.data.AppsRepoImpl
+import com.example.vkpractice.data.SimpleDataSource
+import com.example.vkpractice.domain.App
 
 //import androidx.compose.ui.text.style.LineHeightStyle.Alignment
 
 @Composable
-fun AppList(modifier: Modifier = Modifier, viewModel: AppListViewModel = viewModel() ) {
+fun AppList(modifier: Modifier = Modifier, viewModel: AppListViewModel = viewModel(factory = AppListViewModelFactory(AppsRepoImpl(
+    SimpleDataSource(), AppMapper()))) ) {
+
     val apps = viewModel.appList.collectAsState().value
 
     Column(modifier) {
@@ -119,6 +124,20 @@ fun AppItem(app: App, modifier: Modifier = Modifier) {
 @Composable
 @Preview
 fun preveiw() {
-    val apps = listOf(App("Magical forest guide", "trevelling", "The most complete collection of information about magical forests",R.drawable.forest), App("Sleep manager", "health", "Application for tracking your sleep", R.drawable.sleep), App("Nutrition manager", "health", "This application heps you track consumed food and gained callories and nutrition elements. Contains a lot of other functions", R.drawable.looking))
+    val apps = listOf(
+        App(
+            "Magical forest guide",
+            "trevelling",
+            "The most complete collection of information about magical forests",
+            R.drawable.forest
+        ),
+        App("Sleep manager", "health", "Application for tracking your sleep", R.drawable.sleep),
+        App(
+            "Nutrition manager",
+            "health",
+            "This application heps you track consumed food and gained callories and nutrition elements. Contains a lot of other functions",
+            R.drawable.looking
+        )
+    )
     AppList()
 }

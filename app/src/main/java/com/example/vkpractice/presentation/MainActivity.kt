@@ -1,5 +1,4 @@
-
-package com.example.vkpractice
+package com.example.vkpractice.presentation
 
 import android.content.Intent
 import android.os.Bundle
@@ -28,7 +27,7 @@ class MainActivity : ComponentActivity() {
 //                        modifier = Modifier.padding(innerPadding)
 //                    )
                     //Screenshots(listOf(R.drawable.forest, R.drawable.sleep, R.drawable.running, R.drawable.looking), Modifier.padding(innerPadding))// 1, 2, 3 ,
-                    AppList( Modifier.padding(innerPadding))
+                    AppList(Modifier.padding(innerPadding))
                 }
             }
         }

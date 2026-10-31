@@ -1,12 +1,12 @@
-package com.example.vkpractice
+package com.example.vkpractice.presentation
 
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement.Absolute.spacedBy
-import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.material3.Text
@@ -19,23 +19,34 @@ import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import com.example.vkpractice.R
+import com.example.vkpractice.domain.App
 
 @Composable
-fun AppScreen() {}//x
+fun AppScreen() {
+
+}
 
 @Composable
-fun Screenshots(screenshots: List<Int>, modifier: Modifier) {//String
+fun Screenshots(screenshots: List<Int>, modifier: Modifier) {
     Column(modifier) {
-        Text(stringResource(R.string.app_screenshots), fontSize=40.sp)//id.//,sp , Modifier.size(40.dp)
-        Row(horizontalArrangement=spacedBy(4.dp), modifier = Modifier.horizontalScroll(rememberScrollState(0))) {//Spaced
+        Text(stringResource(R.string.app_screenshots), fontSize=40.sp)
+        Row(horizontalArrangement=spacedBy(4.dp), modifier = Modifier.horizontalScroll(rememberScrollState(0)).padding(40.dp).background(Color.Blue)) {
             for (s in screenshots) {
-                //Box(Modifier.size(width=230.dp, height=43.dp).background(Color.Blue))//() c
-                Image(painter = painterResource(s), contentDescription = "", Modifier.size(350.dp), contentScale= ContentScale.FillWidth)//xim PainterRes m R.drawable.u_exact width=0.dp, height = .content
+
+                Image(painter = painterResource(s), contentDescription = "", Modifier.size(350.dp), contentScale= ContentScale.FillWidth)
             }
         }
 
     }
-}//i
+}//ii
+
+@Composable
+fun SimalarApps(apps: List<App>, modifier: Modifier = Modifier) {
+    Column() {
+        Text(stringResource(R.string.details_similar_label))
+    }
+}
 @Preview
 @Composable
 private fun Prev() {

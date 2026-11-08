@@ -41,11 +41,11 @@ class AppListViewModel(val apps: AppsRepo) : ViewModel() {
 
 }
 
-class AppListViewModelFactory(private val apps: AppsRepo) : ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>) : T {
-        if (modelClass.isAssignableFrom(AppListViewModel::class.java)) {
-            return AppListViewModel(apps) as T
-        }
-        throw IllegalStateException("model class in inassignable")
-    }
-}
+//class AppListViewModelFactory(private val apps: AppsRepo) : ViewModelProvider.Factory {
+//    override fun <T : ViewModel> create(modelClass: Class<T>) : T {
+//        if (modelClass.isAssignableFrom(AppListViewModel::class.java)) {
+//            return AppListViewModel(apps) as T
+//        }
+//        throw IllegalStateException("model class in inassignable")
+//    }
+//}

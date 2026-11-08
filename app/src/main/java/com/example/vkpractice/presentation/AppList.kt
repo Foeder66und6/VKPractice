@@ -45,12 +45,12 @@ import com.example.vkpractice.data.AppMapper
 import com.example.vkpractice.data.AppsRepoImpl
 import com.example.vkpractice.data.SimpleDataSource
 import com.example.vkpractice.domain.App
+import org.koin.androidx.compose.koinViewModel
 
 //import androidx.compose.ui.text.style.LineHeightStyle.Alignment
 
 @Composable
-fun AppList(modifier: Modifier = Modifier, viewModel: AppListViewModel = viewModel(factory = AppListViewModelFactory(AppsRepoImpl(
-    SimpleDataSource(), AppMapper()))) ) {
+fun AppList(modifier: Modifier = Modifier, viewModel: AppListViewModel = koinViewModel() ) {
 
     val apps = viewModel.appList.collectAsState().value
 

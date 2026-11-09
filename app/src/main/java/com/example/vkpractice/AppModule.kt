@@ -1,5 +1,6 @@
 package com.example.vkpractice
 
+import com.example.vkpractice.data.APIDataSource
 import com.example.vkpractice.data.AppMapper
 import com.example.vkpractice.data.AppsRepoImpl
 import com.example.vkpractice.data.SimpleDataSource
@@ -13,6 +14,7 @@ import org.koin.plugin.module.dsl.viewModel
 val appModule = module {
     single<AppMapper>() bind AppMapper::class
     single<SimpleDataSource>() bind SimpleDataSource::class
+    single<APIDataSource>() bind APIDataSource::class
     single<AppsRepoImpl>() bind AppsRepo::class
     viewModel<AppListViewModel>()
 }

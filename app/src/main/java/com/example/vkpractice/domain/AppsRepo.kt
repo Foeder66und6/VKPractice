@@ -4,6 +4,6 @@ interface AppsRepo {
 
 
 
-    fun getApps() : List<App>
+    suspend fun getApps() : List<App>
     fun getNext(index: Int) : App
 }

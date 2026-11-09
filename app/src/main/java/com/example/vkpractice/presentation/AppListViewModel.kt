@@ -21,8 +21,9 @@ class AppListViewModel(val apps: AppsRepo) : ViewModel() {
     private val _events = Channel<String>()
     val events: Flow<String?> = _events.receiveAsFlow()
     init {
-
-        _appList.value = apps.getApps().toMutableList()
+        viewModelScope.launch {
+            _appList.value = apps.getApps().toMutableList()
+        }
     }
     fun addNaxt(app: App) {
         val trList = MutableList(_appList.value.size, {i: Int -> _appList.value[i]})

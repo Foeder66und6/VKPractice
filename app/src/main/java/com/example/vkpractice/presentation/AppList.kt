@@ -129,14 +129,16 @@ fun preveiw() {
             "Magical forest guide",
             "trevelling",
             "The most complete collection of information about magical forests",
-            R.drawable.forest
+            R.drawable.forest,
+            "forest_quide"
         ),
-        App("Sleep manager", "health", "Application for tracking your sleep", R.drawable.sleep),
+        App("Sleep manager", "health", "Application for tracking your sleep", R.drawable.sleep, "sleep"),
         App(
             "Nutrition manager",
             "health",
             "This application heps you track consumed food and gained callories and nutrition elements. Contains a lot of other functions",
-            R.drawable.looking
+            R.drawable.looking,
+            "nutrition"
         )
     )
     AppList()

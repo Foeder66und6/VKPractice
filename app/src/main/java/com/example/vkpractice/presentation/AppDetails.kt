@@ -21,12 +21,30 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.example.vkpractice.R
 import com.example.vkpractice.domain.App
+import com.example.vkpractice.domain.DetailsScreenState
 
 @Composable
 fun AppScreen() {
 
 }
 
+@Composable
+fun MainBlock(app: DetailsScreenState) {
+Column() {
+    Row {
+
+        Column() {//COl
+            Text(app.title)
+            Text(app.developer)
+            Row {
+                Text(app.ageRating.toString())// /
+                Text(app.size.toString())
+            }
+        }
+    }
+
+}
+}
 @Composable
 fun Screenshots(screenshots: List<Int>, modifier: Modifier) {
     Column(modifier) {

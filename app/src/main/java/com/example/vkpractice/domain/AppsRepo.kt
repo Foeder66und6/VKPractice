@@ -9,4 +9,5 @@ interface AppsRepo {
     suspend fun getApps() : List<App>
     fun getNext(index: Int) : App
     suspend fun loadDetails(id: String) : DetailedApp
+    suspend fun loadRating(id: String) : Int
 }

@@ -17,4 +17,7 @@
     <string name="install">Установить</string>
     <string name="installing">Installing</string>
     <string name="installed">Installed</string>
+    <string name="app_list_label_rating">Rating</string>
+    <string name="app_list_label_sequential">sequential loading</string>
+    <string name="app_list_label_parallel">parallel loading</string>
 </resources>

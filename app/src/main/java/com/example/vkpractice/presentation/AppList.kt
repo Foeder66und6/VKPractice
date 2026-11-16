@@ -53,18 +53,46 @@ import org.koin.androidx.compose.koinViewModel
 fun AppList(onItemClick: (String) -> Unit, modifier: Modifier = Modifier, viewModel: AppListViewModel = koinViewModel() ) {
 
     val apps = viewModel.appList.collectAsState().value
+    val ratings = viewModel.ratings.collectAsState().value
+    val sequentialTime = viewModel.sequentialTime.collectAsState().value
+    val parallelTime = viewModel.parallelTime.collectAsState().value
 
     Column(modifier) {
         Toolbar(Modifier.clickable() {viewModel.sendMessage("ok")})
 
+        Row(horizontalArrangement=Arrangement.spacedBy(8.dp)) {
+            Button({viewModel.loadRatingsSequentially(apps.map({app: App -> app.id}))}) {
+                var text = stringResource(R.string.app_list_label_sequential)
+                if (sequentialTime > 0) {
+                    text = "${stringResource(R.string.app_list_label_sequential)} (${sequentialTime})"
+                }
+                Text(text)
+            }
+            Button({viewModel.loadRatingsParallelly(apps.map({app: App -> app.id}))}) {
+                var text = stringResource(R.string.app_list_label_sequential)
+                if (parallelTime > 0) {
+                    text = "${stringResource(R.string.app_list_label_parallel)} (${parallelTime})"
+                }
+                Text(text)
+            }
+        }
         Box() {
             LazyColumn() {
 
-                for (app in apps) {
-                    item{
-                        AppItem(app, Modifier.clickable(){onItemClick(app.id)})
-
+                if (ratings.size > 0) {
+                    for (i in 0..<apps.size) {
+                        item {
+                            RatedAppItem(apps[i], ratings[i], Modifier.clickable(){onItemClick(apps[i].id)})
+                        }
                     }
+                } else {
+                    for (app in apps) {
+                        item{
+                            AppItem(app, Modifier.clickable(){onItemClick(app.id)})
+
+                        }
+                    }
+
                 }
             }
             val msg = viewModel.events.collectAsState(null).value

@@ -4,6 +4,8 @@ import com.example.vkpractice.domain.App
 import com.example.vkpractice.domain.AppsRepo
 import com.example.vkpractice.domain.DetailedApp
 import com.example.vkpractice.presentation.DetailsScreenState
+import kotlinx.coroutines.delay
+import java.util.Random//kotlin.random.
 
 class AppsRepoImpl(val dataSource: SimpleDataSource, val apiDataSource: APIDataSource, val imageLoader: ImageLoader, val mapper: AppMapper) : AppsRepo {
 
@@ -44,5 +46,9 @@ class AppsRepoImpl(val dataSource: SimpleDataSource, val apiDataSource: APIDataS
         val screenshots = detailedApp.screenshotUrlList.map({url: String -> imageLoader.loadImage(url)})
         val icon = imageLoader.loadImage(detailedApp.iconUrl)
         return mapper.toDetailedApp(detailedApp, icon, screenshots)
+    }
+    override suspend fun loadRating(id: String) : Int {
+        delay(150)
+        return 40 + Random().nextInt(61)
     }
 }

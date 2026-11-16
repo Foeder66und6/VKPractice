@@ -50,7 +50,7 @@ import org.koin.androidx.compose.koinViewModel
 //import androidx.compose.ui.text.style.LineHeightStyle.Alignment
 
 @Composable
-fun AppList(modifier: Modifier = Modifier, viewModel: AppListViewModel = koinViewModel() ) {
+fun AppList(onItemClick: (String) -> Unit, modifier: Modifier = Modifier, viewModel: AppListViewModel = koinViewModel() ) {
 
     val apps = viewModel.appList.collectAsState().value
 
@@ -62,7 +62,7 @@ fun AppList(modifier: Modifier = Modifier, viewModel: AppListViewModel = koinVie
 
                 for (app in apps) {
                     item{
-                        AppItem(app, Modifier.clickable(){viewModel.addNaxt(app)})
+                        AppItem(app, Modifier.clickable(){onItemClick(app.id)})
 
                     }
                 }
@@ -109,17 +109,17 @@ fun AppColumn(apps: List<App>) {
 
 }
 
-@Composable
-fun AppItem(app: App, modifier: Modifier = Modifier) {
-    Row(modifier.padding(8.dp), horizontalArrangement= Arrangement.spacedBy((8.dp))) {
-        Image(painterResource(app.iconID), app.title, Modifier.size(100.dp, 100.dp).clip(RoundedCornerShape(25.dp)), contentScale=ContentScale.Crop)
-        Column(verticalArrangement=Arrangement.spacedBy(6.dp)) {
-            Text(app.title, maxLines = 1, fontSize = 20.sp, fontWeight = FontWeight.Bold)
-            Text("${stringResource(R.string.label_category)}: ${app.category}", maxLines = 1)
-            Text(app.description, maxLines = 2, overflow = TextOverflow.Ellipsis)
-        }
-    }
-}
+//@Composable
+//fun AppItem(app: App, modifier: Modifier = Modifier) {
+//    Row(modifier.padding(8.dp), horizontalArrangement= Arrangement.spacedBy((8.dp))) {
+//        Image(painterResource(app.iconID), app.title, Modifier.size(100.dp, 100.dp).clip(RoundedCornerShape(25.dp)), contentScale=ContentScale.Crop)
+//        Column(verticalArrangement=Arrangement.spacedBy(6.dp)) {
+//            Text(app.title, maxLines = 1, fontSize = 20.sp, fontWeight = FontWeight.Bold)
+//            Text("${stringResource(R.string.label_category)}: ${app.category}", maxLines = 1)
+//            Text(app.description, maxLines = 2, overflow = TextOverflow.Ellipsis)
+//        }
+//    }
+//}
 
 @Composable
 @Preview
@@ -141,5 +141,5 @@ fun preveiw() {
             "nutrition"
         )
     )
-    AppList()
+    //AppList()
 }

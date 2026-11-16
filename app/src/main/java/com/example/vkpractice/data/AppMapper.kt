@@ -3,7 +3,8 @@ package com.example.vkpractice.data
 import android.graphics.Bitmap
 import com.example.vkpractice.R
 import com.example.vkpractice.domain.App
-import com.example.vkpractice.domain.DetailsScreenState
+import com.example.vkpractice.domain.DetailedApp
+import com.example.vkpractice.presentation.DetailsScreenState
 
 class AppMapper {
 
@@ -13,8 +14,8 @@ class AppMapper {
     fun fromAPIDTO(appAPI: AppAPIDTO) : App {
         return appAPI.run({App(name, category, description, R.drawable.running, id)})
     }
-    fun toDetailedApp(detailedAppAPI: DetailedAppAPIDTO, screenshots: List<Bitmap>) : DetailsScreenState.DetailedApp {
-        return detailedAppAPI.run({ DetailsScreenState.DetailedApp(name, developer, category, size, ageRating, screenshots, description) })
+    fun toDetailedApp(detailedAppAPI: DetailedAppAPIDTO, icon: Bitmap, screenshots: List<Bitmap>) : DetailedApp {
+        return detailedAppAPI.run({ DetailedApp(name, icon, developer, category, size, ageRating, screenshots, description) })
     }
 
 }

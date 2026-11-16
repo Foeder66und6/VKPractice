@@ -1,10 +1,12 @@
 package com.example.vkpractice.domain
 
+import com.example.vkpractice.presentation.DetailsScreenState
+
 interface AppsRepo {
 
 
 
     suspend fun getApps() : List<App>
     fun getNext(index: Int) : App
-    suspend fun loadDetails(id: String) : DetailsScreenState.DetailedApp
+    suspend fun loadDetails(id: String) : DetailedApp
 }

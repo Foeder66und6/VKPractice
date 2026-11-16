@@ -15,4 +15,6 @@
     <string name="label_showcase">Витрина</string>
     <string name="app_details_developer">Разработчик</string>
     <string name="install">Установить</string>
+    <string name="installing">Installing</string>
+    <string name="installed">Installed</string>
 </resources>

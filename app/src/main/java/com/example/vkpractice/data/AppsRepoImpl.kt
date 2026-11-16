@@ -1,10 +1,9 @@
 package com.example.vkpractice.data
 
-import com.example.vkpractice.R
 import com.example.vkpractice.domain.App
 import com.example.vkpractice.domain.AppsRepo
-import com.example.vkpractice.domain.DetailsScreenState
-import java.util.Random
+import com.example.vkpractice.domain.DetailedApp
+import com.example.vkpractice.presentation.DetailsScreenState
 
 class AppsRepoImpl(val dataSource: SimpleDataSource, val apiDataSource: APIDataSource, val imageLoader: ImageLoader, val mapper: AppMapper) : AppsRepo {
 
@@ -40,9 +39,10 @@ class AppsRepoImpl(val dataSource: SimpleDataSource, val apiDataSource: APIDataS
     override fun getNext(index: Int) : App {
         return mapper.fromDTO(dataSource.getCatalogue()[index % dataSource.getCatalogue().size])
     }
-    override  suspend fun loadDetails(id: String) : DetailsScreenState.DetailedApp {
+    override  suspend fun loadDetails(id: String) : DetailedApp {
         val detailedApp = apiDataSource.api.getAppDetails(id)
         val screenshots = detailedApp.screenshotUrlList.map({url: String -> imageLoader.loadImage(url)})
-        return mapper.toDetailedApp(detailedApp, screenshots)//mapper.toDEtailedApp()//DetailsScreenState.DetailedApp()
+        val icon = imageLoader.loadImage(detailedApp.iconUrl)
+        return mapper.toDetailedApp(detailedApp, icon, screenshots)
     }
 }

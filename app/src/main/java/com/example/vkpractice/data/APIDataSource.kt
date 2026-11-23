@@ -6,5 +6,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 class APIDataSource {
     private val retro = Retrofit.Builder().addConverterFactory(GsonConverterFactory.create()).baseUrl("http://185.103.109.134").build()
-    val api = retro.create(AppAPI::class.java)
+    private val api = retro.create(AppAPI::class.java)
+    fun api() : AppAPI = api
 }

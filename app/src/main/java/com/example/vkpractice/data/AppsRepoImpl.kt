@@ -31,7 +31,7 @@ class AppsRepoImpl(val dataSource: SimpleDataSource, val apiDataSource: APIDataS
  */
 
     override suspend fun getApps() : List<App> {
-        val apps = apiDataSource.api.getApps()
+        val apps = apiDataSource.api().getApps()
         return apps.map({app -> mapper.fromAPIDTO(app)})
 //        val rand = Random();
 //        val size = rand.nextInt(20)
@@ -42,7 +42,7 @@ class AppsRepoImpl(val dataSource: SimpleDataSource, val apiDataSource: APIDataS
         return mapper.fromDTO(dataSource.getCatalogue()[index % dataSource.getCatalogue().size])
     }
     override  suspend fun loadDetails(id: String) : DetailedApp {
-        val detailedApp = apiDataSource.api.getAppDetails(id)
+        val detailedApp = apiDataSource.api().getAppDetails(id)
         val screenshots = detailedApp.screenshotUrlList.map({url: String -> imageLoader.loadImage(url)})
         val icon = imageLoader.loadImage(detailedApp.iconUrl)
         return mapper.toDetailedApp(detailedApp, icon, screenshots)
